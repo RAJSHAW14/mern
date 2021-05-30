@@ -3,10 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// Import react-redux from react
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import rootReducer from "./reducer";
+
+//Create user reducer function
+//combine mutile reducer
+//create Redux Store
+
+const store = createStore(rootReducer, composeWithDevTools());
+
+//Provide redux store to entire app
 
 ReactDOM.render(
   <React.StrictMode>
+  <Provider store={store}> 
     <App />
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
