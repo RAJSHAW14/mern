@@ -1,11 +1,13 @@
 import express from "express";
-import router from "./routes/auth"
+import fs from 'fs';
 
 const app = express();
 
 // router middleware
 
-app.use("/api",router);
+fs.readdirSync("./routes").map((r) => app.use("/api",require(`./routes/${r}`)));
+
+// app.use("/api",router);
 
 const port = process.env.PORT || 8000;
 
