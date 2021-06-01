@@ -39,6 +39,7 @@ const Register = () => {
         <ToastContainer
             position="top-center"
             autoClose={3001}
+            autoClose={3000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
