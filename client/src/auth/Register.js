@@ -1,32 +1,37 @@
-import {useState} from "react"
+import {useReducer, useState} from "react"
 import RegistrationForm from "../form/RegistrationForm"
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const Register = () => {
+const Register = ({history}) => {
     
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [place, setPlace] = useState('')  
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post(`http://localhost:8000/api/register`, {
+            const res = await axios.post(`${process.env.REACT_APP_API}/register`, {
                 name,
                 email,
                 password,
+                place,
             });
            // console.log("Register User ==>", res);
             toast.success('Register Sucessfull');
+            setTimeout(3000)
+            history.push("/login")
         } catch (err) {
             console.log(err);    
             if(err.response.status === 400) toast.error(err.response.data);
         }
     };
     
+
     return (
     <>
     <div className="container-fluid col-md-6 offset-md-3">
@@ -58,6 +63,8 @@ const Register = () => {
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}
+                place={place}
+                setPlace={setPlace}
             />
         </div>
     </div>

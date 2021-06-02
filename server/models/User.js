@@ -20,6 +20,10 @@ const userSchema = new Schema({
         min : 6,
         required : true
     },
+    place : {
+        type : String,
+        required : false
+    },
 
     stripe_account_id:'',
     stripe_seller_id:{},
