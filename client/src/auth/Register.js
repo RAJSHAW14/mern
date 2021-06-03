@@ -24,6 +24,10 @@ const Register = ({history}) => {
            // console.log("Register User ==>", res);
             toast.success('Register Sucessfull');
             setTimeout(3000)
+            document.getElementById('name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('place').value = "";
             history.push("/login")
         } catch (err) {
             console.log(err);    
@@ -34,7 +38,7 @@ const Register = ({history}) => {
 
     return (
     <>
-    <div className="container-fluid col-md-6 offset-md-3">
+    <div className="container-fluid col-md-6 offset-md-3 mt-5 shadow p-4 rounded">
     <div className="row text-center">
     <div className="col">
     <h1>Registration Form</h1>
